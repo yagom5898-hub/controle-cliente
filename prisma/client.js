@@ -4,6 +4,9 @@ let prismaInstance = null;
 
 export function getPrisma() {
   const url = process.env.DATABASE_URL;
+  try {
+    console.log("ENV_DATABASE_URL_PRESENT=" + (url && url.trim() !== "" ? "true" : "false"));
+  } catch {}
   if (!url || typeof url !== "string" || url.trim() === "") {
     return null;
   }
@@ -21,6 +24,5 @@ export function getPrisma() {
   return prismaInstance;
 }
 
-const prisma = getPrisma();
-export default prisma;
+export default null;
 
