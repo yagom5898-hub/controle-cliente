@@ -4,15 +4,19 @@ let prismaInstance = null;
 
 export function getPrisma() {
   const url = process.env.DATABASE_URL;
-  if (!url || typeof url !== "string" || url.trim() === "" || !/^postgres(ql)?:\/\//i.test(url)) {
+  if (!url || typeof url !== "string" || url.trim() === "") {
     return null;
   }
   if (globalThis.prismaInstance) {
     return globalThis.prismaInstance;
   }
-  prismaInstance = new PrismaClient({
-    log: ["warn", "error"],
-  });
+  try {
+    prismaInstance = new PrismaClient({
+      log: ["warn", "error"],
+    });
+  } catch {
+    return null;
+  }
   globalThis.prismaInstance = prismaInstance;
   return prismaInstance;
 }
