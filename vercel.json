@@ -1,0 +1,12 @@
+{
+  "framework": "express",
+  "functions": {
+    "index.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.js" }
+  ]
+}
+

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CRM Simples</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>CRM Simples</h1>
+      <p>Cadastro de Clientes e Histórico de Atendimentos</p>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>Cadastro de Clientes</h2>
+        <form id="form-cliente">
+          <input type="hidden" id="cliente-id" />
+          <div class="grid">
+            <div class="field">
+              <label for="nome">Nome *</label>
+              <input id="nome" type="text" required placeholder="Ex: João Silva" />
+            </div>
+            <div class="field">
+              <label for="telefone">Telefone *</label>
+              <input id="telefone" type="text" required placeholder="Ex: (11) 99999-0000" />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="Ex: joao@email.com" />
+            </div>
+            <div class="field">
+              <label for="servico">Serviço principal</label>
+              <input id="servico" type="text" placeholder="Ex: Corte masculino" />
+            </div>
+            <div class="field field-full">
+              <label for="observacoes">Observações</label>
+              <textarea id="observacoes" rows="2" placeholder="Preferências, alergias, etc."></textarea>
+            </div>
+          </div>
+          <div class="actions">
+            <button type="submit" id="btn-salvar">Salvar</button>
+            <button type="button" id="btn-cancelar" class="secondary">Cancelar edição</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="list-header">
+          <h2>Clientes</h2>
+          <input id="busca" type="text" placeholder="Buscar por nome ou telefone" />
+        </div>
+        <div id="lista-clientes" class="list"></div>
+      </section>
+    </main>
+
+    <div id="modal-atendimentos" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modal-title">Atendimentos</h3>
+          <button id="modal-fechar" class="icon-btn" aria-label="Fechar">×</button>
+        </div>
+        <form id="form-atendimento">
+          <div class="grid">
+            <div class="field">
+              <label for="at-data">Data</label>
+              <input id="at-data" type="date" />
+            </div>
+            <div class="field">
+              <label for="at-servico">Serviço realizado</label>
+              <input id="at-servico" type="text" placeholder="Ex: Corte + barba" />
+            </div>
+            <div class="field">
+              <label for="at-valor">Valor (R$)</label>
+              <input id="at-valor" type="number" step="0.01" placeholder="Ex: 50.00" />
+            </div>
+            <div class="field field-full">
+              <label for="at-observacoes">Observações</label>
+              <textarea id="at-observacoes" rows="2"></textarea>
+            </div>
+          </div>
+          <div class="actions">
+            <button type="submit">Adicionar atendimento</button>
+          </div>
+        </form>
+        <div id="lista-atendimentos" class="list"></div>
+      </div>
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
+
